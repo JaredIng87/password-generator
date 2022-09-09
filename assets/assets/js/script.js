@@ -58,7 +58,14 @@ var generatePassword = function() {
   includeSpec();
 //TODO: determine why windows call twice
 
+var password = '';
+for(var i = 0; i < userInput; i++) {
+var math = Math.floor(Math.random() * index.length);
+var randomInteger = index[math];
+password += randomInteger;
+}
 
+return password;
 
 }
 
