@@ -7,6 +7,65 @@ var index = [];
 var userInput = '';
 
 
+var generatePassword = function() {
+
+  var passwordLength = function() {
+    userInput = window.prompt("How long would you like your password to be? (8-128)");
+    if (!userInput) {
+      window.alert("Please enter a value.");
+      passwordLength();
+    }
+    else if (userInput > 128) {
+      window.alert("Please Try Again.");
+      passwordLength();
+    }
+    else if (userInput < 8) {
+      window.alert("Please try again.");
+      passwordLength();
+    }
+  }
+  var includeLow = function() {
+    var userSaidYes = window.confirm("Would you like to include lowercase letters?");
+    if (userSaidYes) {
+      index = [...index, ...lowerCase];
+    }
+  }
+  var includeUp = function() {
+    var userSaidYes = window.confirm("Would you like to include uppercase letters?");
+    if (userSaidYes) {
+      index = [...index, ...upperCase];
+    }
+  }
+
+  var includeNum = function() {
+    var userSaidYes = window.confirm("Would you like to include numerals?");
+    if (userSaidYes) {
+      index = [...index, ...numeric];
+    }
+  }
+
+  var includeSpec = function() {
+    var userSaidYes = window.confirm("Would you like to include special characters?");
+    if(userSaidYes) {
+      index = [...index, ...special];
+    }
+  }
+
+  passwordLength();
+  includeLow();
+  includeUp();
+  includeNum();
+  includeSpec();
+//TODO: determine why windows call twice
+
+
+
+}
+
+
+
+
+
 
 
 // Get references to the #generate element
