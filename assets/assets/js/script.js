@@ -1,14 +1,15 @@
-// Assignment code here
+//arrays of includable characters
 var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 var numeric = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 var special = ["!", "$", "#", "?", "&"];
-var index = [];
-var userInput = '';
+var userChoices = [];
+var length = '';
 
-
+//function to generate randomized password
 var generatePassword = function() {
 
+  //window prompt to choose password length, with if/else statements
   var passwordLength = function() {
     userInput = window.prompt("How long would you like your password to be? (8-128)");
     if (!userInput) {
@@ -24,33 +25,40 @@ var generatePassword = function() {
       passwordLength();
     }
   }
+
+  //window prompt to include lower case letters, with if/else statements
   var includeLow = function() {
     var userSaidYes = window.confirm("Would you like to include lowercase letters?");
     if (userSaidYes) {
-      index = [...index, ...lowerCase];
+      userChoices = [...userChoices, ...lowerCase];
     }
   }
+
+  //window prompt to include upper case letters, with if/else statements
   var includeUp = function() {
     var userSaidYes = window.confirm("Would you like to include uppercase letters?");
     if (userSaidYes) {
-      index = [...index, ...upperCase];
+      userChoices = [...userChoices, ...upperCase];
     }
   }
 
+  //window prompt to include numbers, with if/else statements
   var includeNum = function() {
     var userSaidYes = window.confirm("Would you like to include numerals?");
     if (userSaidYes) {
-      index = [...index, ...numeric];
+      userChoices = [...userChoices, ...numeric];
     }
   }
 
+  //window prompt to include special characters, with if/else statements
   var includeSpec = function() {
     var userSaidYes = window.confirm("Would you like to include special characters?");
     if(userSaidYes) {
-      index = [...index, ...special];
+      userChoices = [...userChoices, ...special];
     }
   }
 
+  //call all functions
   passwordLength();
   includeLow();
   includeUp();
@@ -58,15 +66,17 @@ var generatePassword = function() {
   includeSpec();
 //TODO: determine why windows call twice
 
-var password = '';
+//for loop with math to create random string including chosen characters at chosen length
+var randomString = '';
 for(var i = 0; i < userInput; i++) {
-var math = Math.floor(Math.random() * index.length);
-var randomInteger = index[math];
-password += randomInteger;
+var math = Math.floor(Math.random() * userChoices.length);
+var randomInteger = userChoices[math];
+randomString += randomInteger;
 }
 
-return password;
 
+//return generated string
+return randomString;
 }
 
 
